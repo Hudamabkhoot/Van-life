@@ -1,12 +1,14 @@
 import React, {Suspense} from 'react'
 import { Link, defer, useLoaderData, Await } from 'react-router-dom'
 import styles from '../../css modules/Dashboard.module.css'
-import { getHostVans, getReviews, deleteVan, getTransactions } from '../../firebase'
+import { getHostVans, getHostReviews, deleteVan, getTransactions } from '../../firebase'
 import { BsStarFill } from "react-icons/bs"
 import Van from '../../assets/images/van.svg'
+import Verified from '../../assets/images/verified.svg'
+import Pending from '../../assets/images/pending.svg'
 
 export function loader(){
-    return defer( { vans:getHostVans(), transactions: getTransactions(), reviews: getReviews() } )
+    return defer( { vans:getHostVans(), transactions: getTransactions(), reviews: getHostReviews() } )
 }
 
 export default function Dashboard(){
@@ -60,7 +62,16 @@ export default function Dashboard(){
                         <div className={styles.vanSingle}>
                         <img src={van.imageUrl} alt={van.name} className={styles.vanSingleImg}/>
                         <div>
+                            <div className={styles.title}>
                             <h3>{van.name}</h3>
+                            {van.approved ? 
+                            <img src={Verified} className={styles.verified}/> 
+                            : 
+                            <p className={styles.pending}>
+                                 <img src={Pending} className={styles.pendingImg}/>
+                                Pending
+                                </p>}
+                            </div>
                             <p>${van.price} /day</p>
                         </div>
                         </div>

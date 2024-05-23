@@ -7,14 +7,15 @@ import About from './pages/About'
 import Login, { action as loginAction } from './pages/Login'
 import Register, { action as registerAction } from './pages/Register'
 import Vans, { loader as vansLoader } from './pages/Vans/Vans'
-import VanDetail, {loader as vansDetailLoader} from './pages/Vans/VanDetail'
+import VanDetail, {loader as vansDetailLoader } from './pages/Vans/VanDetail'
 import Dashboard, {loader as hostVansLoaderDashboard} from './pages/Host/Dashboard'
 import Income from './pages/Host/Income'
 import Reviews from './pages/Host/Reviews'
+import Settings from './pages/Host/Settings'
 import AddHostVan, { action as addVanAction } from './pages/Host/AddHostVan'
 import HostVans, {loader as hostVansLoader} from './pages/Host/HostVans'
 import HostVanDetail, {loader as hostDetailLoader} from './pages/Host/HostVanDetail'
-import HostVanInfo from './pages/Host/HostVanInfo'
+import HostVanInfo, { loader as VanInfoLoader } from './pages/Host/HostVanInfo'
 import HostVanPhotos from './pages/Host/HostVanPhotos'
 import HostVanPricing from './pages/Host/HostVanPricing'
 import NotFound from './pages/NotFound'
@@ -43,7 +44,7 @@ const router = createBrowserRouter([
       {
         path: 'vans/:id',
         element: <VanDetail />,
-        loader: vansDetailLoader
+        loader: vansDetailLoader,
       },
       {
         path: 'register',
@@ -75,6 +76,10 @@ const router = createBrowserRouter([
             element: <Reviews />,
           },
           {
+            path: 'settings',
+            element: <Settings />,
+          },
+          {
             path: 'addvan',
             element: <AddHostVan />,
             action: addVanAction
@@ -92,6 +97,7 @@ const router = createBrowserRouter([
               {
                 index: true,
                 element: <HostVanInfo />,
+                loader: VanInfoLoader
               },
               {
                 path: 'pricing',

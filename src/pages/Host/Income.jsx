@@ -39,7 +39,6 @@ ChartJS.register(
         fetchTransactions();
     }, []);
 
-    console.log(transactions);
     
     const handleToggleShow = () => {
         setShowAll(!showAll);

@@ -175,6 +175,34 @@
     border-radius: 5px;
 }
 
+.title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+
+.verified {
+    height: 20px;
+    width: 20px;
+}
+
+.pendingImg {
+    height: 25px;
+    width: 25px;
+}
+
+.pending {
+    background-color: #ffddb2;
+    padding: 0.2em 0.3em;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    font-size: 0.7rem;
+    font-weight: 600;
+}
 
 .btnContainer {
     display: flex;
@@ -210,3 +238,4 @@
 .details:hover, .seeMore:hover, .deleteBtn:hover{
     color: #161616
 }
+

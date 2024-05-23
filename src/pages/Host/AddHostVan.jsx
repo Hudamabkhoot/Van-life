@@ -16,7 +16,7 @@ export async function action({ request }) {
     const vanImg = formData.get('imageurl')
     try {
         await addVan(vanName, vanPrice, vanType, vanDescription, vanImg)
-        console.log('van added')
+        alert('Your van will be reviewd and listed as soon as possible!');
         return redirect('/host')
     } catch (err) {
         return {
@@ -42,7 +42,6 @@ export default function AddHostVan() {
             const snapshot = await uploadBytes(imageRef, imageUpload);
             const url = await getDownloadURL(snapshot.ref);
             setImageUrl(url); 
-            console.log(url)
             alert('Upload successful. Click the Add Van button to finish adding your van.');
         } catch(error) {
             setError(error.message);
@@ -93,61 +92,3 @@ export default function AddHostVan() {
         </div>
     )
 }
-
-
-/*
-
-    const uploadFile = () => {
-        if (imageUpload == null) {
-            setError('Please select an image to upload.')
-            return
-        }
-        const imageRef = ref(storage, `images/${imageUpload.name + uuidv4()}`)
-        uploadBytes(imageRef, imageUpload)
-            .then((snapshot) => {
-                console.log(snapshot.ref)
-                getDownloadURL(snapshot.ref)
-                    .then((url) => {
-                        setImageUrl(url)
-                        alert('Upload successful. Click the Add Van button to finish adding your van.')
-                    })
-                    .catch(error => setError(error.message))
-            })
-            .catch(error => setError(error.message)) 
-    }
-
-
-    <Form method='post' className={styles.addForm} encType='multipart/form-data'>
-                <input
-                    name="name"
-                    type='text'
-                    placeholder='Van Name'
-                />
-                <input
-                    name="price"
-                    type='number'
-                    placeholder='Price'
-                />
-                <textarea
-                    name="description"
-                    type='text'
-                    placeholder='Van Description'
-                />
-                <select name='type'>
-                    <option value=''>--Select a van type--</option>
-                    <option value='rugged'>Rugged</option>
-                    <option value='simple'>Simple</option>
-                    <option value='luxury'>Luxury</option>
-                </select>
-                <label htmlFor='uploadFile'>Upload Van Image</label>
-                <input type='file' name='uploadFile' accept=".jpg, .jpeg, .png" onChange={(event) => {
-                    setImageUpload(event.target.files[0]);
-                }} />
-                <button type='button' onClick={uploadFile}>Upload Image</button>
-                <input type='hidden' name='imageurl' 
-                value={imageUrl}/>
-                {imageUrl !== null && <button type='submit'
-                >Add Your Van</button>}
-            </Form>
-
-*/

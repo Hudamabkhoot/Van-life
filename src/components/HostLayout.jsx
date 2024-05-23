@@ -41,6 +41,12 @@ export default function HostLayout() {
                 >
                     Reviews
                 </NavLink>
+                <NavLink
+                    to="settings"
+                    style={({ isActive }) => isActive ? activeStyles : null}
+                >
+                    Settings
+                </NavLink>
                 </div>
             </nav>
             <Outlet />

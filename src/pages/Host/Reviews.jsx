@@ -2,7 +2,8 @@ import React, { useState,useEffect } from "react"
 import styles from '../../css modules/Reviews.module.css'
 import { BsStarFill } from "react-icons/bs"
 import StarRatingsChart from "../../components/StarRatingsChart";
-import { getReviews } from '../../firebase'
+import { getHostReviews } from '../../firebase'
+
 
 export default function Reviews() {
     const [reviews, setReviews] = useState([]);
@@ -10,7 +11,7 @@ export default function Reviews() {
   useEffect(() => {
       async function fetchReviews() {
           try {
-              const dataArr = await getReviews();
+              const dataArr = await getHostReviews();
               setReviews(dataArr);
           } catch (error) {
             console.error("Error fetching transactions:", error);
@@ -19,8 +20,6 @@ export default function Reviews() {
       }
       fetchReviews();
   }, []);
-
-  console.log(reviews)
 
 
      return(

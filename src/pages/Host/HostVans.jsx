@@ -3,7 +3,6 @@ import { Link, Await, defer, useLoaderData  } from "react-router-dom"
 import styles from '../../css modules/HostVans.module.css'
 import { getHostVans, deleteVan } from "../../firebase"
 
-
 export function loader(){
     return defer( {vans: getHostVans()} )
 }

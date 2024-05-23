@@ -81,7 +81,8 @@ async function loginUser (email, password){
   const TransactionsRef = collection(db, "transactions");
 
   export async function getAllVans(){
-    const querySnapshot = await getDocs(vansRef)
+    const q = query(vansRef, where("approved", "==", true));
+    const querySnapshot = await getDocs(q)
     const dataArr = querySnapshot.docs.map(doc => ({
       ...doc.data(),
       id: doc.id
@@ -100,19 +101,22 @@ async function loginUser (email, password){
     return dataArr
   }
 
-  export async function addReviewToVan(vanId, review) {
+  export async function getReviewsByVanId(vanId) {
     try {
-      const vanDocRef = doc(db, "vans", vanId);
-      await updateDoc(vanDocRef, {
-        reviews: arrayUnion(review[0]) 
-      });
-  
-      return true;
+        const q = query(ReviewsRef, where('vanId', '==', vanId));
+        const querySnapshot = await getDocs(q);
+        const reviews = querySnapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data()
+      }));
+      return reviews;
     } catch (error) {
-      return { error: error.message };
+      console.error('Error fetching reviews:', error.message);
+      return []; 
     }
   }
-  
+
+
   export async function getTransactions(){
     const querySnapshot = await getDocs(TransactionsRef)
     const dataArr = querySnapshot.docs.map(doc => ({
@@ -144,6 +148,23 @@ async function loginUser (email, password){
     }))
     return dataArr
   }
+
+  export async function getHostReviews() {
+    const auth = getAuth();
+    const user = auth.currentUser;
+    const uid = user.uid;
+    const hostVans = await getHostVans();
+    const vanIds = hostVans.map(van => van.id);
+
+    const q = query(ReviewsRef, where("vanId", "in", vanIds));
+    const querySnapshot = await getDocs(q);
+
+    const dataArr = querySnapshot.docs
+        .map(doc => ({ ...doc.data(), id: doc.id }))
+        .filter(review => vanIds.includes(review.vanId));
+
+    return dataArr;
+}
   
   export async function getHost(){
   
@@ -167,6 +188,24 @@ async function loginUser (email, password){
         description: vanDescription,
         hostId: auth.currentUser.uid,
         imageUrl: vanImg,
+        approved: false
+      })
+      return true
+   } catch(error){
+      return {error: error.message}
+   }
+  }
+
+
+
+const addReview = async (date, name, rating, text, vanId) => {
+    try {
+        await addDoc(collection(db, 'Reviews'), {
+        date: date,
+        name: name,
+        rating: rating,
+        text: text,
+        vanId: vanId,
       })
       return true
    } catch(error){
@@ -197,5 +236,6 @@ async function loginUser (email, password){
     loginUser,
     logOutUser,
     addVan,
-    deleteVan
+    deleteVan,
+    addReview
   }
