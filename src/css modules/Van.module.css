@@ -1,0 +1,43 @@
+.vanListContainer {
+    padding-inline: 23px;
+}
+
+.vanListContainer button {
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.vanListFilterButtons {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.vanListFilterButtons > a {
+    margin-right: 15px;
+}
+
+.vanList {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+    justify-items: center;
+    gap: 34px;
+    margin-top: 57px;
+}
+
+.vanTile {
+    width: 100%;
+    height: 100%; 
+    object-fit: cover;
+}
+
+.vanTile a {
+    color: #161616;
+    text-decoration: none;
+}
+
+.vanTile img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 5px;
+}

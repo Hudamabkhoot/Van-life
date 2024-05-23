@@ -1,0 +1,26 @@
+{
+  "name": "project",
+  "type": "module",
+  "dependencies": {
+    "chart.js": "^4.4.3",
+    "firebase": "^10.12.0",
+    "miragejs": "0.1.46",
+    "react": "18.2.0",
+    "react-chartjs-2": "^5.2.0",
+    "react-dom": "18.2.0",
+    "react-icons": "4.7.1",
+    "react-router-dom": "6.4.3",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^8.4.1",
+    "@vitejs/plugin-react": "*",
+    "vite": "latest"
+  },
+  "scripts": {
+    "start": "vite",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  }
+}

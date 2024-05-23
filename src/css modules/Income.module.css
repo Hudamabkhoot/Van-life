@@ -1,0 +1,70 @@
+
+.hostIncome {
+    padding-inline: 26px;
+    color: #161616;
+}
+
+.hostIncome > p {
+    color: #4d4d4d;
+}
+
+.hostIncome > p span {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.hostIncome > h2 {
+    font-size: 38px;
+    color: #161616;
+    font-weight: 900;
+}
+
+.hostIncome .infoHeader > p {
+    color: #4d4d4d;
+}
+
+.hostIncome .infoHeader > p span {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.hostIncome .infoHeader > h3 {
+    font-weight: 700;
+    font-size: 24px;
+    margin-top: 60px;
+}
+
+.hostIncome .transaction {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    margin-bottom: 31px;
+    padding: 1.2em;
+    border-radius: 6px;
+}
+.hostIncome .transaction > h3 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.hostIncome .transaction > p {
+    font-weight: 500;
+    font-size: 1rem;
+    color: #4d4d4d;
+}
+
+.showMoreContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.showMore {
+    border: none;
+    background-color: #ffddb2;
+    border-radius: 5px;
+    padding: 0.5em 1em;
+    border: none;
+}

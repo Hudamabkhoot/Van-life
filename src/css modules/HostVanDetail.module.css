@@ -1,0 +1,58 @@
+.hostVanDetailContainer {
+    background-color: white;
+    padding: 24px;
+    margin: 30px 26px;
+}
+
+.hostVanDetail {
+    display: flex;
+    align-items: center;
+}
+
+.hostVanDetail > img {
+    height: 160px;
+    border-radius: 5px;
+    margin-right: 20px;
+}
+
+.hostVanDetailInfo > h3 {
+    margin-top: 24px;
+    margin-bottom: 5px;
+    font-size: 26px;
+    font-weight: 700;
+}
+
+.hostVanDetailInfo > h4 {
+    font-size: 20px;
+    margin-block: 0;
+}
+
+.hostVanDetailNav {
+    display: flex;
+    margin-block: 25px;
+}
+
+.hostVanDetailNav a {
+    text-decoration: none;
+    color: #4d4d4d;
+    font-weight: 500;
+    padding: 5px 20px;
+}
+
+.hostVanDetailNav a:first-of-type {
+    text-decoration: none;
+    color: #4d4d4d;
+    font-weight: 500;
+    padding: 5px 15px;
+    margin-left: -15px;
+}
+
+.hostVanDetailNav a:hover {
+    color: #161616;
+    text-decoration: underline;
+    font-weight: 700;
+}
+
+.backButton {
+    padding: 0.5em;
+}

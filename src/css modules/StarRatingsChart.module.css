@@ -1,0 +1,37 @@
+
+.starRatingsChart {
+    padding: 1em;
+    margin-bottom: 3em;
+    max-width: 500px;
+    width: 90%;
+  }
+  
+  .starRatingsChart table {
+    width: 90%;
+  }
+  
+  .starRatingsChart h1 {
+    font-size: 150%;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .starRatingsChart h1 small {
+    font-size: 60%;
+    color: #888888;
+  }
+  
+  .starRatingsChart p {
+    font-size: 90%;
+    font-weight: 400;
+    color: #888888;
+    margin: 0.5em;
+  }
+  
+  .rating {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+  }

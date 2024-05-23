@@ -1,0 +1,212 @@
+.addbtnContainer {
+    background-color: #ffddb2;
+}
+
+.getStartedContainer {
+    background-color: #fff7ed;
+}
+.addbtnContainer, .getStartedContainer {
+    border-radius: 5px;
+    padding: 0.4em 0;
+    margin:  0 1em;
+    max-width: 180px;
+}
+
+.addbtn, .getStartedbtn {
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ gap: 10px;
+}
+
+.addbtn img {
+    width: 25px;
+}
+
+.dashboardEarnings {
+    background-color: #ffead0;
+    padding: 37px 26px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1.5em;
+}
+
+.dashboardEarnings > .info > h1 {
+    font-size: 36px;
+    color: #161616;
+    margin: 0;
+}
+
+.dashboardEarnings > .info > p {
+    color: #4d4d4d;
+}
+
+.dashboardEarnings > .info > p > span {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.dashboardEarnings > .info > h2 {
+    margin: 0;
+    font-size: 38px;
+    color: #161616;
+    font-weight: 900;
+}
+
+.dashboardReviews {
+    background-color: #ffddb2;
+    padding: 25px 26px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.dashboardReviews > h2 {
+    margin: 0;
+}
+
+
+.hostReviews {
+    padding-inline: 26px;
+    color: #161616;
+}
+
+.hostReviews .topText {
+    display: flex;
+    align-items: center;
+    margin-bottom: 32px;
+}
+
+.hostReviews .topText > h2 {
+    font-weight: 700;
+    font-size: 32px;
+    margin: 0;
+    margin-right: 20px;
+}
+
+.hostReviews .topText > p {
+    margin: 0;
+    color: #4d4d4d;
+}
+
+.hostReviews .topText > p span {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.hostReviews > img {
+    margin-bottom: 36px;
+}
+
+.hostReviews .review {
+    margin-block: 25px;
+}
+
+.hostReviews .review .info {
+    display: flex;
+}
+
+.hostReviews .review .name {
+    color: #161616;
+    margin-right: 10px;
+    font-weight: 600;
+}
+
+.hostReviews .review .date {
+    color: #8c8c8c;
+}
+
+.review  {
+    border-bottom: 1px solid #c7c7c7;
+}
+
+.review:last-child {
+    border-bottom: none;
+}
+
+.hostReviews .reviewStar {
+    color: #ff8c38;
+    margin-right: 5px;
+}
+
+.dashboardVans {
+    padding: 1em;
+    margin-top: 2em;
+    background-color: #ffddb2;
+    display: flex;
+    flex-direction: column;
+}
+
+.dashboardVans > .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dashboardVans .vansList {
+    padding-inline: 0;
+}
+
+.vanSingleConatiner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    border-radius: 5px;
+    padding: 0 1em;
+    margin: 1em 0;
+}
+
+.vanSingle {
+    display: flex;
+    align-items: center;
+    margin: 0.5em 0;
+    padding: 0 0.5em;
+}
+
+.vanSingleImg {
+    height: 70px;
+    border-radius: 5px;
+    margin-right: 17px;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+
+.btnContainer {
+    display: flex;
+    gap: 20px;
+    padding: 0.5em
+}
+
+
+.seeMoreContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2em;
+}
+
+.seeMore, .deleteBtn {
+    background-color: #ffddb2;
+}
+
+
+.details {
+    background-color: white;
+}
+
+.seeMore, .details, .deleteBtn {
+    border: none;
+    border-radius: 5px;
+    padding: 0.5em 1.5em;
+    color: #4d4d4d;
+    font-weight: 700;
+}
+
+.details:hover, .seeMore:hover, .deleteBtn:hover{
+    color: #161616
+}

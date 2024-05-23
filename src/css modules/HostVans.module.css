@@ -1,0 +1,47 @@
+.linkWrapper {
+    color: unset;
+    text-decoration: unset;
+}
+
+.vansList {
+    padding-inline: 26px;
+}
+
+.vansTitle {
+    padding-inline: 26px;
+}
+
+.vanSingleConatiner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    border-radius: 5px;
+    padding: 0.5em 1em;
+    margin: 1em 0;
+}
+.vanSingle {
+    display: flex;
+    align-items: center;
+    margin: 0.5em;
+    padding: 0 0.5em;
+}
+
+.vanSingleImg {
+    height: 70px;
+    border-radius: 5px;
+    margin-right: 17px;
+}
+
+.btnContainer {
+    display: flex;
+    gap: 20px;
+    padding: 0.5em
+}
+
+.btn {
+    border: none;
+    background-color: #ffddb2;
+    border-radius: 5px;
+    padding: 0.5em;
+}

@@ -1,0 +1,73 @@
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 1em;
+}
+
+.containerImg {
+        width: 100%;
+        border-radius: 5px;
+}
+
+
+.addForm {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    max-width: 550px;
+}
+
+.addForm > input {
+    border: 1px solid rgba(209, 213, 219);
+    height: 40px;
+    text-indent: 10px;
+    font-family: "Inter", sans-serif;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+    font-weight: 400;
+    border-radius: 5px;
+}
+
+.addForm > input:focus {
+    outline: none;
+}
+
+.addForm > select {
+    width: 180px;
+    background-color:#ff8c38;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+    border: none;
+    color: white;
+    padding: 0.5em;
+    border-radius: 6px;
+}
+
+.addForm > input[type='file']{
+    padding: 0.5em;
+    height: 80px;
+    width: 250px;
+}
+
+.addForm > button {
+    background-color: #ff8c38;
+    border: none;
+    border-radius: 6px;
+    height: 55px;
+    color: white;
+    font-family: "Inter", sans-serif;
+    cursor: pointer;
+}
+
+.addForm > button:disabled {
+    background-color: #aaaaaa;
+    cursor: not-allowed;
+}
+
+.addError {
+    color: red;
+}
+
