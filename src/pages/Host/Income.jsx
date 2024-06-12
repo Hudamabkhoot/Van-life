@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from "react"
-import styles from '../../css modules/Income.module.css'
-import { getTransactions } from '../../firebase'
+import React, {useState, useContext} from "react"
+import styles from '../../css modules/Host/Income.module.css'
+import { HostContext } from '../../components/HostContext'
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -20,25 +20,11 @@ ChartJS.register(
     Legend
   );
  
-  
+
   export default function Income() {
     const [showAll, setShowAll] = useState(false);
     const [displayCount, setDisplayCount] = useState(5);
-    const [transactions, setTransactions] = useState([]);
-
-    useEffect(() => {
-        async function fetchTransactions() {
-            try {
-                const dataArr = await getTransactions();
-                setTransactions(dataArr);
-            } catch (error) {
-                console.error("Error fetching transactions:", error);
-                throw error;
-            }
-        }
-        fetchTransactions();
-    }, []);
-
+    const { transactions, last30DaysIncome, last30DaysTransactions } = useContext(HostContext);
     
     const handleToggleShow = () => {
         setShowAll(!showAll);
@@ -50,14 +36,6 @@ ChartJS.register(
     };
 
     const displayedTransactions = showAll ? transactions : transactions.slice(0, displayCount);
-    
-    let last30DaysIncome = 0
-
-    const last30DaysTransactions = transactions
-        .map(item => ({ ...item, date: new Date(item.date) }))
-        .filter(item => new Date() - item.date <= 30 * 24 * 60 * 60 * 1000);
-        last30DaysIncome = last30DaysTransactions.reduce((total, transaction) => total + transaction.amount, 0);
-    
         const newData = {
         labels: last30DaysTransactions.map(item => {
             const options = { month: 'long', day: 'numeric' };
@@ -86,17 +64,21 @@ ChartJS.register(
                     }
                 }
             }
-        }
+        },
     };
 
     return (
         <section className={styles.hostIncome}>
+            <div className={styles.hostIncomeTop}>
             <h1>Income</h1>
             <p>
                 Last <span>30 days</span>
             </p>
+            </div>
             <h2>${last30DaysIncome}</h2>
+            <div className={styles.hostChart}>
             <Bar options={options} data={newData} />
+            </div>
             <div className={styles.infoHeader}>
                 <h3>Your transactions ({transactions.length})</h3>
             </div>

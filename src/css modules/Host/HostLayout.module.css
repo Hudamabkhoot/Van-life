@@ -1,0 +1,35 @@
+.hostNav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 2em 1em;
+    max-width: 600px;
+
+}
+
+.hostNav a {
+    text-decoration: none;
+    color: #4d4d4d;
+    background-color: #ffddb2;
+    border-radius: 5px;
+    font-weight: 500;
+    padding: 0.5em 1.5em;
+}
+
+.hostNav a:hover {
+    color: #161616;
+    font-weight: 700;
+}
+
+
+@media (max-width: 600px){
+.hostNav {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 10px;
+    text-align: center;
+}
+
+}

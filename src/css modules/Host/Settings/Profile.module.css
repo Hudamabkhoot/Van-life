@@ -1,0 +1,144 @@
+.modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    margin: 0 auto;
+    height: 50vh;
+}
+
+.content {
+    padding: 20px;
+    border-radius: 8px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+/* Adjust the styles of form elements and error message as needed */
+.content input[type="text"],
+.content button, .input input[type="password"] {
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid var(--grey);
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.content input[type="text"],
+.content button {
+    width: 100%;
+}
+
+.content button {
+    background-color: #ff8c38; /* Green */
+    color: #fff;
+    font-weight: 600;
+    border: none;
+}
+
+.content button:hover {
+    background-color: #e17654; /* Darker green on hover */
+}
+
+.error {
+    color: red;
+    margin-top: 5px;
+}
+
+
+.accountForm {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.input {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.userImg {
+    width: 60px;
+    border-radius: 50%;
+    opacity: 0.7;
+    z-index: 900;
+}
+
+.name, .email {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 10px;
+}
+
+.infoContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-left: 0.5em;
+}
+
+.info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.info h2, p, h4 {
+    margin: 0;
+    padding: 0;
+}
+
+.editIcon {
+    font-size: 18px;
+    color: var(--grey);
+}
+
+.editImgIcon {
+    font-size: 20px;
+    color: var(--grey);
+}
+
+
+@media (min-width: 750px){
+    .userImg {
+        width: 80px;
+    }
+
+    .editImgIcon {
+        font-size: 25px;
+        color: var(--grey);
+    }
+}
+
+
+
+
+
+
+.loadingOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.5); /* Adjust opacity as needed */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Ensure it appears on top of other content */
+}

@@ -1,43 +1,46 @@
-import React, { useEffect, useContext } from "react"
-import { Link,  useNavigate, useActionData, Form } from 'react-router-dom'
+import React, { useEffect, useContext, useState } from "react"
+import { Link,  useNavigate, useActionData, Form, redirect } from 'react-router-dom'
 import styles from '../css modules/Register.module.css'
-import AuthContext from '../components/AuthContext'
-import { registerUser } from "../firebase";
-
+import { AuthContext }  from '../components/AuthContext'
+import { registerUser } from "../firebase/firebase";
+import { Toaster } from 'react-hot-toast';
 
 export async function action( {request} ){
     const formData = await request.formData()
-    const firstName = formData.get('firstName')
-    const lastName = formData.get('lastName')
     const email = formData.get('email')
     const password = formData.get('password')
-    
     try {
-        const data = await registerUser(firstName, lastName, email, password )
+        const data = await registerUser(email, password);        
         return data
     } catch(err){
-        return {
-            error: err.message
-        }
     }
 }
 
 
 export default function Register() {
-
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     const navigate = useNavigate()
     const data = useActionData()
-    const {user} = useContext(AuthContext)
+    const {authUser} = useContext(AuthContext)
 
     useEffect(() => {
-        if(user){
+        if(authUser !== null){
             navigate('/host')
         }
-    }, [user])
+    }, [authUser])
 
+    const handleEmailChange = (e) => {
+        setEmail(e.target.value);
+        setPassword(''); // Clear password field
+    }; 
 
     return (
         <div className={styles.registerContainer}>
+            <Toaster
+                position="top-center"
+                reverseOrder={false}
+            />
             {
                 location.state?.message &&
                     <h3 className={styles.registerError}>{location.state.message}</h3>
@@ -53,17 +56,24 @@ export default function Register() {
                     name="email"
                     type="email"
                     placeholder="Email address"
+                    value={email}
+                    onChange={handleEmailChange}
+                    required
+
                 />
                 <input
                     name="password"
                     type="password"
                     placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
                 />
                 <button
-                   className='main-btn' 
-                   type='submit'
+                    type='submit'
+                    className='main-btn'
                 >
-                    Register as a Host
+                    Sign up
                 </button>
             </Form>
             <div className={styles.login}>

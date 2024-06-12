@@ -2,25 +2,27 @@ import React  from 'react'
 import { RouterProvider, createBrowserRouter} from 'react-router-dom'
 import Layout from './components/Layout'
 import HostLayout from './components/HostLayout'
-import Home from './pages/Home'
+import SettingsLayout from './components/SettingsLayout'
+import Home, { loader as homeLoader } from './pages/Home'
 import About from './pages/About'
 import Login, { action as loginAction } from './pages/Login'
 import Register, { action as registerAction } from './pages/Register'
 import Vans, { loader as vansLoader } from './pages/Vans/Vans'
 import VanDetail, {loader as vansDetailLoader } from './pages/Vans/VanDetail'
-import Dashboard, {loader as hostVansLoaderDashboard} from './pages/Host/Dashboard'
+import Dashboard  from './pages/Host/Dashboard'
 import Income from './pages/Host/Income'
 import Reviews from './pages/Host/Reviews'
-import Settings from './pages/Host/Settings'
+import Profile from './pages/Host/Settings/Profile'
+import Account from './pages/Host/Settings/Account'
 import AddHostVan, { action as addVanAction } from './pages/Host/AddHostVan'
-import HostVans, {loader as hostVansLoader} from './pages/Host/HostVans'
+import HostVans  from './pages/Host/HostVans'
 import HostVanDetail, {loader as hostDetailLoader} from './pages/Host/HostVanDetail'
 import HostVanInfo, { loader as VanInfoLoader } from './pages/Host/HostVanInfo'
 import HostVanPhotos from './pages/Host/HostVanPhotos'
 import HostVanPricing from './pages/Host/HostVanPricing'
+import { AuthProvider } from './components/AuthContext';
 import NotFound from './pages/NotFound'
 import AuthRequired from './components/AuthRequired'
-import { AuthProvider } from './components/AuthContext'
 
 
 const router = createBrowserRouter([
@@ -31,6 +33,7 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Home />,
+        loader: homeLoader
       },
       {
         path: 'about',
@@ -64,8 +67,7 @@ const router = createBrowserRouter([
             children: [
           {
             index: true,
-            element: <Dashboard />,
-            loader: hostVansLoaderDashboard
+            element: <Dashboard />
           },
           {
             path: 'income', 
@@ -73,11 +75,21 @@ const router = createBrowserRouter([
           },
           {
             path: 'reviews',
-            element: <Reviews />,
+            element: <Reviews />
           },
           {
             path: 'settings',
-            element: <Settings />,
+            element: <SettingsLayout />,
+            children: [
+              {
+                index: true,
+                element: <Profile />
+              },
+              {
+                path: 'account',
+                element: <Account />,
+              },
+            ],
           },
           {
             path: 'addvan',
@@ -86,8 +98,7 @@ const router = createBrowserRouter([
           },
           {
             path: 'vans',
-            element: <HostVans />,
-            loader: hostVansLoader
+            element: <HostVans />
           },
           {
             path: 'vans/:id',
@@ -124,7 +135,7 @@ const router = createBrowserRouter([
 function App() {
   return (
     <AuthProvider>
-    <RouterProvider router={router} />
+      <RouterProvider router={router} />
     </AuthProvider>
   )
 }

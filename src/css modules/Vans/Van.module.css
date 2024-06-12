@@ -1,0 +1,107 @@
+.vanListContainer {
+    padding-inline: 23px;
+    margin-top: 3em;
+}
+
+.vanListContainer h1 {
+    color: var(--text-main);
+}
+
+.vanListContainer button {
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.vanListFilterButtons {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.vanListFilterButtons > a {
+    margin-right: 15px;
+}
+
+.vanList {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+    justify-items: center;
+    gap: 34px;
+    margin-top: 57px;
+}
+
+.vanTile {
+    width: 100%;
+    height: 100%; 
+    object-fit: cover;
+    position: relative;
+    border-radius: 10px;
+    background-color: var(--bright-orange);
+    padding-bottom: 1em;
+}
+
+.vanInfo > h2 {
+    margin-left: 0.5em;
+    color: var(--text-main);
+}
+
+
+.vanTile .vanInfo p {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0.5em 1em;
+    background-color: rgba(255, 234, 208, 1);
+    border-radius: 5px;
+    font-weight: 500;
+    margin-left: 0.5em;
+    margin-top: 0.5em;;
+    color: var(--text-main);    
+}
+
+
+.vanTile a {
+    color: var(--black);
+    text-decoration: none;
+}
+
+.vanTile img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+
+}
+
+
+.NoVans {
+    padding: 2em 0;
+    height: 100vh;
+}
+
+.loadingContainer {
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 0.5em 1em;
+    border-radius: 5px;
+    gap: 10px;
+}
+
+.VanReviews {
+    margin-left: 0.9em;
+}
+
+.VanReviews .reviewStar {
+    color: var(--dark-orange);
+}
+
+.VanReviewsNew {
+    background-color: var(--dark-orange);
+    color: var(--bright-orange);
+    max-width: 115px;
+    padding: 0.2em 0.3em;
+    border-radius: 8px;
+}

@@ -6,8 +6,8 @@
     -o-background-size: cover;
     background-size: cover;
     min-height: 350px;
-    color: white;
-    padding: 45px 23px;
+    color: var(--main-color);
+    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -17,27 +17,312 @@
 .homeContainer h1 {
     font-weight: 700;
     font-size: 2.25rem;
+    text-align: center;
+    margin: 0;
 }
 
 .homeContainer p {
     max-width: 900px;
+    text-align: center;
+    padding: 0.5em 0;
 }
 
-.homeContainer a {
+.homeContainer a, .join a {
     display: inline-block;
     text-align: center;
     text-decoration: none;
-    background-color: #ff8c38;
     border: none;
     width: 200px;
     padding-block: 0.75rem;
-    color: white;
+    color: var(--main-color);
     font-weight: 700;
     border-radius: 5px;
     cursor: pointer;
     transition: transform 0.1s ease-in-out;
 }
 
+
+.homeContainer a {
+    background-color: var(--dark-orange);
+}
+
+.join a {
+    background-color: var(--text-main);
+}
+
 .homeContainer a:hover {
     transform: translate(1px, 1px);
 }
+
+
+.featuredVans {
+    margin: 2em 1.5em;
+    margin-top: 3em;
+    color: var(--text-main);
+}
+
+.featuredVans h2 {
+    border-bottom: 2px solid var(--text-main);
+}
+
+.vanList {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    overflow: auto;
+    gap: 40px;
+    transition: all 150ms ease;
+    -ms-overflow-style: none; 
+    scrollbar-width: none;
+    padding: 0.5em;
+}
+
+.vanList h2 {
+    text-align: center;
+}
+
+.seeMore {
+    border: none;
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+    justify-content: center;
+    background-color: var(--bright-orange);
+    border: none;
+    color: var(--text-header);
+    font-weight: 700;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 0.5em 1em;
+    min-width: 250px;
+    height: 230px;
+}
+
+
+.seeMore:hover {
+    min-width: 252px;
+    height: 232px;
+}
+
+.vanTile {
+    min-width: 300px;
+    min-height: 300px;
+    object-fit: cover;
+    position: relative;
+}
+
+.vanInfo p {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0.4em 0.8em;
+    background-color: rgba(255, 234, 208, 0.8);
+    border-radius: 5px;
+    font-weight: 500;
+    margin-left: 0.5em;
+    margin-top: 0.5em;;
+    color: var(--text-header);
+}
+
+.vanTile a {
+    color: var(--text-main);
+    text-decoration: none;
+}
+
+.vanInfo h3 {
+    margin-left: 0.7em;
+    margin-bottom: 0.3em;
+
+}
+
+.vanTile img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+
+.aboutUs {
+    padding: 2em 1em;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+
+.testimonials {
+    background-color: var(--text-main);
+    padding-top: 1em;
+    padding-left: 1.5em;
+}
+
+
+.testimonials h2 {
+    color: var(--main-color);
+    border-bottom: 2px solid var(--bright-orange);
+}
+
+
+.hostReviews {
+    color: var(--main-text);
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    overflow: auto;
+    gap: 40px;
+    transition: all 150ms ease;
+    -ms-overflow-style: none; 
+    scrollbar-width: none;
+    margin-right: 1.5em;
+}
+
+.hostReviews > img {
+    margin-bottom: 36px;
+}
+
+.hostReviews .review {
+    min-width: 280px;
+    height: 320px;
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 8px;
+    background-color: var(--main-color);
+    margin-top: 3.5em;
+    margin-bottom: 2em;
+    position: relative;
+}
+
+.hostReviews .review:first-child {
+    margin-left: 1.5em;
+}
+
+.reviewContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2.5em 0.5em;
+}
+
+.reviewStars {
+ margin: 0.4em 0.3em;
+}
+
+.userImg {
+    border-radius: 50%;
+    width: 90px;
+    position: absolute;
+    top: -1%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+}
+
+
+.hostReviews .review .info {
+    display: flex;
+}
+
+.hostReviews .review .name {
+    font-weight: 700;
+    margin: 0;
+   padding-bottom: 0.5em;
+}
+
+.hostReviews .text {
+   margin-top: 0.2em;
+   text-align: justify;
+   line-height: 22px;
+   font-size: 0.9rem;
+}
+
+.review:last-child {
+    border-bottom: none;
+}
+
+.hostReviews .reviewStar {
+    color: var(--dark-orange);
+    margin: 4px;
+}
+
+
+.join {
+    display: flex;
+    align-items: center;
+    width: 100vw;
+    flex-direction: column;
+    gap: 15px;
+    padding: 3em 1.5em; 
+    margin: 3.5em 0;
+    color: var(--text-main);
+    text-align: center;
+}
+
+.join img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 5px;
+    aspect-ratio: 4 / 3;
+}
+
+
+.joinText {
+    max-width: 410px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0 auto;
+    padding: 1em;
+}
+
+.joinText span {
+    font-weight: 600;
+}
+
+.joinText p {
+    margin-top: 1em;
+    margin-bottom: 1.5em;
+}
+
+
+.today {
+    text-decoration: underline;
+}
+
+
+.NoVans {
+    padding: 2em 0;
+    height: 100vh;
+}
+
+.loadingContainer {
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 0.5em 1em;
+    border-radius: 5px;
+    gap: 10px;
+}
+
+
+@media (min-width: 600px){
+    .join {
+        flex-direction: row;
+    }
+}
+
+
+@media (min-width: 900px){
+    .joinText {
+        font-size: 1.2rem;
+    }
+}
+

@@ -1,7 +1,6 @@
 import { Bar } from "react-chartjs-2";
 import { Chart, BarElement, Tooltip, LinearScale, CategoryScale } from "chart.js";
-import styles from '../css modules/StarRatingsChart.module.css';
-import { getReviews } from '../firebase';
+import styles from '../css modules/Host/StarRatingsChart.module.css';
 
 Chart.register(BarElement, Tooltip, LinearScale, CategoryScale);
 
@@ -88,12 +87,10 @@ export default function StarRatingsChart({ reviews, width = 500, height = 200 })
 
   return (
     <div className={styles.starRatingsChart}>
-      <section>
         <div className={styles.rating}>
           <p><span>{averageRating}</span> {starLabel}</p>
           <p>Total: {totalReviews}</p>
         </div>
-      </section>
       <Bar
         options={options}
         data={data}

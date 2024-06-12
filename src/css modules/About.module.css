@@ -1,15 +1,14 @@
 .aboutContainer {
     position: relative;
+    display: flex;
+    flex-direction: column;
 }
 
-.aboutHeroImage {
-    background-image: url('../assets/images/about-hero.jpg');
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
+
+.aboutBackground {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.527),rgba(0, 0, 0, 0.5)), url('../assets/images/about-hero.jpg');
     background-size: cover;
     background-position: left bottom;
-    opacity: 0.9;
     width: 100%;
     min-height: 450px;
     position: relative;
@@ -17,20 +16,86 @@
 
 .welcome {
     position: absolute;
-    top: 20%;
+    top: 10%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    color: white;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    font-size: 2.5rem;
+    color: var(--main-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    font-size: 2rem;
     width: 100%;
 }
 
+
+.welcome span {
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.aboutUs {
+    padding: 3em 1em;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+    width: 95%;
+}
+
+.aboutUs h2 {
+    font-size: 2rem;
+    border-bottom: 2px solid var(--bright-orange);
+}
+
+.aboutUs p {
+    text-align: justify;
+    margin-top: 1em;
+}
+
+ 
+.mission {
+    background-color: var(--orange);
+    padding: 3em 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0 auto;
+    text-align: center;
+    gap: 40px;
+    width: 95%;
+}
+
+.mission img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 4px;
+}
+
+.mission h2, p {
+    max-width: 450px;
+    text-align: justify;
+}
+
+.mission h2 {
+    font-size: 2rem;
+    border-bottom: 2px solid var(--bright-orange);
+}
+
+.mission p {
+   margin-top: 1em;
+}
+
 .aboutPageContent {
-    padding-inline: 23px;
-    color: #161616;
+    color: var(--text-main);
     margin-bottom: 55px;
+    width: 100%;
 }
 
 .aboutPageContent h1 {
@@ -41,13 +106,13 @@
     line-height: 22px;
 }
 
-.aboutPageCta {
-    background-color: #ffcc8d;
-    color: #161616;
-    padding-inline: 32px;
-    padding-bottom: 32px;
-    margin-inline: 27px;
-    border-radius: 5px;
+.aboutPageConainer {
+    background-color: var(--bright-orange);
+    color: var(--text-main);
+    padding: 1em 0 2.5em 2em;
+    margin: 2em;
+    border-radius: 10px;
+    max-width: 800px;
 }
 
 .aboutPageCta h2 {
@@ -56,8 +121,36 @@
 }
 
 .linkButton {
-    background-color: #161616;
-    color: white;
+    background-color: var(--text-main);
+    color: var(--main-color);
     border-radius: 10px;
-    padding: 0.5em;
+    padding: 0.8em ;
 }
+
+
+
+@media (min-width: 750px){
+    .welcome {
+        top: 13%;
+        font-size: 3rem;
+    }
+    
+    
+    .welcome span {
+        font-size: 1.5rem;
+        font-weight: 600;
+    }
+    
+        .mission {
+            flex-direction: row-reverse;
+        } 
+    }
+
+
+@media (min-width: 800px){
+
+    .mission {
+        flex-direction: row-reverse;
+    } 
+}
+

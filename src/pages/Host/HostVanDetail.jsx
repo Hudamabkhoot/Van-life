@@ -1,23 +1,24 @@
 import React, { Suspense } from 'react'
 import { defer, Await, useLoaderData } from 'react-router-dom'
 import { Link, NavLink, Outlet } from 'react-router-dom'
-import styles from '../../css modules/HostVanDetail.module.css'
-import { getVan } from '../../firebase'
+import styles from '../../css modules/Host/HostVanDetail.module.css'
+import { getVan } from '../../firebase/firebase'
+import { IoChevronBackOutline } from "react-icons/io5";
+import PulseLoader from "react-spinners/PulseLoader";
 
 export function loader( {params} ){
     return defer( { van: getVan(params.id)})
 }
 
 export default function HostVanDetail(){
-
     const dataPromise = useLoaderData()
-
+    const activeStyles = {
+        fontWeight: 'bold',
+        color: '#161616',
+     }
+     
     function renderHostVanDetail(currentVan){
-        const activeStyles = {
-            fontWeight: 'bold',
-            textDecoration: 'underline',
-            color: '#161616',
-         }
+
         
         return(
                 <div key={currentVan.id} width={150} className={styles.hostVanDetailContainer}>
@@ -47,8 +48,14 @@ export default function HostVanDetail(){
         <section>
             <Link to='..'
             className={styles.backButton}
-            relative='path'>&larr; <span>Back to all vans</span></Link>
-            <Suspense fallback={<h1>Loading...</h1>}>
+            relative='path'><IoChevronBackOutline className={styles.backIcon}/><span>Back to all vans </span></Link>
+            <Suspense fallback={
+                <div className={styles.NoVans}>
+              <div className={styles.loadingContainer}>
+                <PulseLoader color="#313E2D" />
+                </div>
+              </div>
+            }>
                 <Await resolve={dataPromise.van}>
                     {renderHostVanDetail}
                 </Await>

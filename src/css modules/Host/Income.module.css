@@ -1,26 +1,42 @@
 
 .hostIncome {
-    padding-inline: 26px;
-    color: #161616;
+    padding: 1em;
+    color:  var(--text-main);
 }
 
-.hostIncome > p {
-    color: #4d4d4d;
+.hostChart {
+    max-width: 700px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
 }
 
-.hostIncome > p span {
+
+.hostIncomeTop {
+    display: flex;
+    align-items: center;
+}
+
+.hostIncomeTop > p {
+    color:  var(--text-header);
+    margin-left: 0.5em;
+}
+
+.hostIncomeTop > p span {
     text-decoration: underline;
     font-weight: bold;
 }
 
 .hostIncome > h2 {
     font-size: 38px;
-    color: #161616;
+    color:  var(--text-main);
     font-weight: 900;
+    margin-top: 0;
 }
 
 .hostIncome .infoHeader > p {
-    color: #4d4d4d;
+    color:  var(--text-header);
 }
 
 .hostIncome .infoHeader > p span {
@@ -38,7 +54,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: white;
+    background-color: var(--host-orange);
+    color: var(--text-main);
     margin-bottom: 31px;
     padding: 1.2em;
     border-radius: 6px;
@@ -52,7 +69,7 @@
 .hostIncome .transaction > p {
     font-weight: 500;
     font-size: 1rem;
-    color: #4d4d4d;
+   color: var(--text-main);
 }
 
 .showMoreContainer {
@@ -63,7 +80,8 @@
 
 .showMore {
     border: none;
-    background-color: #ffddb2;
+    background-color: var(--host-orange);
+    color: var(--text-main);
     border-radius: 5px;
     padding: 0.5em 1em;
     border: none;

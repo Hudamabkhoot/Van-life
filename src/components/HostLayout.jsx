@@ -1,18 +1,18 @@
 import React from "react"
 import { NavLink, Outlet } from "react-router-dom"
-import styles from '../css modules/HostLayout.module.css'
+import styles from '../css modules/Host/HostLayout.module.css'
+import { HostProvider } from '../components/HostContext'
 
 export default function HostLayout() {
     const activeStyles = {
-        fontWeight: "bold",
-        textDecoration: "underline",
+        fontWeight: "800",
         color: "#161616"
     }
 
     return (
-        <section>
+        <HostProvider>
+        <section >
             <nav className={styles.hostNav}>
-                <div>
                 <NavLink
                     to="."
                     end
@@ -47,9 +47,9 @@ export default function HostLayout() {
                 >
                     Settings
                 </NavLink>
-                </div>
             </nav>
             <Outlet />
         </section>
+        </HostProvider>
     )
 }

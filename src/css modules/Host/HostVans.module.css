@@ -1,0 +1,159 @@
+.linkWrapper {
+    color: unset;
+    text-decoration: unset;
+}
+
+.vansList {
+    padding-inline: 26px;
+}
+
+.vansTitle {
+    padding-inline: 26px;
+    color: var(--text-main);
+}
+
+.NoDashboardVans {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 40vh;
+    width: 100vw;
+}
+
+.NoDashboardVansBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 200px;
+    padding: 0.5em 1em;
+    border-radius: 5px;
+    gap: 10px;
+    background-color: var(--host-orange);
+    color: var(--text-main);
+}
+
+.vanIcon {
+    font-size: 25px;
+    color: var(--text-main);
+}
+
+.dashboardVans .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dashboardVans {
+    padding: 1em;
+    margin-top: 2em;
+    color:  var(--text-main);
+    display: flex;
+    flex-direction: column;
+}
+
+
+.vansList {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    max-width: 900px;
+    gap: 10px;
+}
+
+.vanSingleConatiner {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: column;
+    height: 230px;
+    border: 2px solid var(--host-orange);
+    border-radius: 5px;
+}
+
+
+.vanSingle {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 0.5em 0;
+}
+
+.vanInfo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 1em;
+    border-top: 2px solid var(--host-orange);
+    padding-top: 0.5em;
+}
+
+.vanInfo h4 {
+    align-items: center;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.vanSingleImg {
+    height: 140px;
+    min-width: 130px;
+    max-width: 180px;
+    border-radius: 5px;
+    margin-right: 17px;
+    margin: 0 auto;
+}
+
+.btnContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.delete {
+    font-size: 20px;
+    color: var(--text-main);
+    cursor: pointer;
+
+}
+
+.NoVans {
+    padding: 2em 0;
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10x;
+    margin: 0 auto;
+    color: var(--text-main);
+    width: 100vw;
+}
+
+.loadingContainer {
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 0.5em 1em;
+    border-radius: 5px;
+    gap: 10px;
+}
+
+
+
+@media (max-width: 480px) {
+    .vansList {
+        grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    }
+
+    .vanSingleImg {
+        height: 100px;
+        width: 130px;
+    }
+    
+}

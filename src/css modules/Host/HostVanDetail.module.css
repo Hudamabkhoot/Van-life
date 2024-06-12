@@ -50,10 +50,36 @@
 
 .hostVanDetailNav a:hover {
     color: #161616;
-    text-decoration: underline;
     font-weight: 700;
 }
 
 .backButton {
-    padding: 0.5em;
+    color: black;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-left: 1em;
+}
+
+.backIcon { 
+    font-size: 1.8rem;
+    color: #161616 
+}
+
+
+.NoVans {
+    padding: 2em 0;
+    height: 100vh;
+}
+
+.loadingContainer {
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 0.5em 1em;
+    border-radius: 5px;
+    gap: 10px;
 }

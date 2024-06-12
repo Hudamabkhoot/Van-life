@@ -1,8 +1,9 @@
-import React, { useEffect, useContext } from "react"
+import React, { useEffect, useContext, useState } from "react"
 import styles from '../css modules/Login.module.css'
 import { Link, useLocation,  useNavigate, useActionData, Form } from 'react-router-dom'
-import { loginUser } from '../firebase'
-import AuthContext from '../components/AuthContext'
+import { loginUser } from '../firebase/firebase'
+import { AuthContext }  from '../components/AuthContext'
+import { Toaster } from 'react-hot-toast';
 
 export async function action( {request} ){
     const formData = await request.formData()
@@ -14,29 +15,36 @@ export async function action( {request} ){
         return data
         
     } catch(err){
-        return {
-            error: err.message
-        }
     } 
     
 }
 
 export default function Login() {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     const navigate = useNavigate()
     const location = useLocation()
     const data = useActionData()
-    
-    const {user} = useContext(AuthContext)
-
+    const { authUser } = useContext(AuthContext)
+   
     useEffect(() => {
-        if(user){
+        if (authUser) {
             navigate('/host')
         }
-    }, [user])
-    
+    }, [authUser])
+
+
+    const handleEmailChange = (e) => {
+        setEmail(e.target.value);
+        setPassword('');
+    };  
 
     return (
         <div className={styles.loginContainer}>
+            <Toaster
+                position="top-center"
+                reverseOrder={false}
+            />
             {
                 location.state?.message &&
                     <h3 className={styles.loginError}>{location.state.message}</h3>
@@ -52,11 +60,15 @@ export default function Login() {
                     name="email"
                     type="email"
                     placeholder="Email address"
+                    value={email}
+                    onChange={handleEmailChange}
                 />
                 <input
                     name="password"
                     type="password"
                     placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                 />
                 <button
                     type='submit'
@@ -68,7 +80,7 @@ export default function Login() {
                 <p>Don't have an account?</p>
             <Link
                 to="/register">
-                    <span>Register as a Host today!</span></Link>
+                    <span> Sign up as a Host today!</span></Link>
             </div>
             </Form>
         </div>

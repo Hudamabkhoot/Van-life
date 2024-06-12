@@ -1,61 +1,58 @@
 import React, { useState } from 'react'
 import { Form, useActionData, redirect } from 'react-router-dom'
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage'
-import styles from '../../css modules/AddHostVan.module.css'
-import { addVan, storage } from '../../firebase'
+import styles from '../../css modules/Host/AddHostVan.module.css'
+import { addVan, storage } from '../../firebase/firebase'
 import Van from "../../assets/images/add-img.jpg"
 import { v4 as uuidv4 } from 'uuid';
-
+import { toast } from 'react-hot-toast'; 
+import { Toaster } from 'react-hot-toast';
 
 export async function action({ request }) {
     const formData = await request.formData()
-    const vanName = formData.get('name')
-    const vanPrice = formData.get('price')
-    const vanType = formData.get('type')
-    const vanDescription = formData.get('description')
+    const vanName = formData.get('name');
+    const vanPrice = formData.get('price');
+    const vanType = formData.get('type');
+    const vanDescription = formData.get('description');
     const vanImg = formData.get('imageurl')
     try {
         await addVan(vanName, vanPrice, vanType, vanDescription, vanImg)
-        alert('Your van will be reviewd and listed as soon as possible!');
         return redirect('/host')
     } catch (err) {
-        return {
-            error: err.message
-        }
     }
 }
 
 export default function AddHostVan() {
     const [imageUpload, setImageUpload] = useState(null);
     const [imageUrl, setImageUrl] = useState('');
-    const [error, setError] = useState('');
     const data = useActionData()
 
     const uploadFile = async () => {
         if (imageUpload == null) {
-            setError('Please select an image to upload.');
+            toast.error('Please select an image to upload.')
             return;
         }
+        const loadingToast = toast.loading('Uploading image...');
     
         try {
             const imageRef = ref(storage, `images/${imageUpload.name + uuidv4()}`);
             const snapshot = await uploadBytes(imageRef, imageUpload);
             const url = await getDownloadURL(snapshot.ref);
             setImageUrl(url); 
-            alert('Upload successful. Click the Add Van button to finish adding your van.');
+            toast.dismiss(loadingToast);
+            toast.success('image uploaded successfully!')
         } catch(error) {
-            setError(error.message);
+            toast.dismiss(loadingToast);
+            toast.error('image upload failed')
         }
     };
 
     return (
         <div className={styles.container}>
-            {data?.error &&
-                <p>{data.error}</p>
-            }
-            {error &&
-                <p>{error}</p>
-            }
+             <Toaster
+                position="top-center"
+                reverseOrder={false}
+            />
             <img src={Van} className={styles.containerImg}/>
             <Form method='post' className={styles.addForm} encType='multipart/form-data'>
                 <input
@@ -74,7 +71,7 @@ export default function AddHostVan() {
                     placeholder='Van Description'
                 />
                 <select name='type'>
-                    <option value=''>--Select a van type--</option>
+                    <option value=''>Select a van type</option>
                     <option value='rugged'>Rugged</option>
                     <option value='simple'>Simple</option>
                     <option value='luxury'>Luxury</option>

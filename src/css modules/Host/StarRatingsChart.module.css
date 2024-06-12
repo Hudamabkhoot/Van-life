@@ -1,5 +1,9 @@
 
 .starRatingsChart {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 0 auto;
     padding: 1em;
     margin-bottom: 3em;
     max-width: 500px;

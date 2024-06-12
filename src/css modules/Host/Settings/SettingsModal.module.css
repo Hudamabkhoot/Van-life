@@ -1,0 +1,73 @@
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    z-index: 1000; /* Ensure it appears above other content */
+}
+
+.content {
+    background-color: var(--main-color);
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 400px;
+    width: 100%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 25px;
+    border: none;
+    background: none;
+}
+
+.content input[type="file"],
+.content input[type="password"],
+.content input[type="text"],
+.content input[type="email"],
+.content input[type="date"],
+.content input[type="number"],
+.submitBtn {
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid var(--grey);
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+
+.content input[type="file"],
+.content input[type="password"],
+.content input[type="text"],
+.content input[type="email"],
+.content input[type="date"],
+.submitBtn {
+    width: 100%;
+}
+
+
+.submitBtn {
+    background-color: var(--dark-orange); 
+    color: var(--white);
+    font-weight: 600;
+    border: none;
+}
+
+.submitBtn:hover {
+    background-color: var(--red-orange); 
+}
+
+.error {
+    color: red;
+    margin-top: 5px;
+}

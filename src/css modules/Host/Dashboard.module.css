@@ -1,0 +1,375 @@
+.addbtnContainer {
+    background-color: var(--host-orange);
+    color:  var(--text-main);
+}
+
+.getStartedContainer {
+    background-color: var(--host-orange);
+}
+
+
+.addbtnContainer, .getStartedContainer {
+    border-radius: 5px;
+    padding: 0.4em 0;
+    margin:  0 1em;
+    max-width: 180px;
+}
+
+.addbtn, .getStartedbtn {
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ gap: 10px;
+}
+
+.addbtn img {
+    width: 25px;
+}
+
+.dashboardEarnings {
+    background-color: var(--host-orange);
+    padding: 2.5em 2em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1.5em;
+    min-height: 300px;
+}
+
+.dashboardEarnings > .info > h1 {
+    font-size: 36px;
+    color: var(--text-main);
+    margin: 0;
+}
+
+.dashboardEarnings > .info > p {
+    color: var( --text-header);
+}
+
+.dashboardEarnings > .info > p > span {
+    font-weight: bold;
+}
+
+.dashboardEarnings > .info > h2 {
+    margin: 0;
+    font-size: 38px;
+    color: var(--text-main);
+    font-weight: 900;
+}
+
+.dashboardReviews {
+    padding: 25px 26px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.dashboardReviews > h2 {
+    margin: 0;
+}
+
+
+.hostReviews {
+    color: var(--text-main);
+    padding: 1.5em 0;
+}
+
+.hostReviews .topText {
+    display: flex;
+    align-items: center;
+    margin-bottom: 32px;
+    margin-left: 1em;
+}
+
+.hostReviews > h2 {
+    margin-left: 0.5em;
+}
+
+.hostReviews .topText > p {
+    margin: 0;
+    color: #4d4d4d;
+}
+
+.hostReviews .topText > p span {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.hostReviews > img {
+    margin-bottom: 36px;
+}
+
+.hostReviews .review {
+    margin: 1.5em;
+    padding: 0 1.5em;
+}
+
+.hostReviews .review .info {
+    display: flex;
+    align-items: center;
+    margin: 1em 0;
+    gap: 10px;
+}
+
+.hostReviews .review .name {
+    color: var(--text-main);
+    margin-right: 10px;
+    font-weight: 600;
+}
+
+.hostReviews .review .date {
+    color: var(--text-header);
+}
+
+.review  {
+    border-bottom: 1px solid var(--grey);
+    padding: 1.5em 0;
+}
+
+.review:last-child {
+    border-bottom: none;
+}
+
+.text {
+    margin-left:3.6em;
+    margin-bottom: 1.5em;
+    max-width: 600px;
+}
+
+.hostReviews .reviewStar {
+    color: var(--dark-orange);
+    margin-right: 5px;
+}
+
+.userImg {
+    width: 50px;
+    border-radius: 50%;
+    border: 1.5px solid var( --text-main);
+    opacity: 0.9;
+}
+
+.NoDashboardVans, .NoDashboardReviews {
+    padding: 2em 0;
+    height: 200px;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10x;
+    margin: 0 auto;
+    color: var(--text-main);
+}
+
+.NoDashboardVansBtn, .NoDashboardReviewsText {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5em 1em;
+    border-radius: 5px;
+    gap: 10px;
+}
+
+.NoDashboardVansBtn {
+    max-width: 200px;
+    color: var(--text-main);
+}
+
+.NoDashboardVansBtn {
+    background-color: var(--main-color);
+}
+
+.vanIcon {
+       font-size: 25px;
+       color: var(--text-main);
+}
+
+.dashboardVans {
+    padding: 1em;
+    margin-top: 2em;
+    background-color: var(--host-orange);
+    color:  var(--text-main);
+    display: flex;
+    flex-direction: column;
+}
+
+.dashboardVans .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dashboardVans .vansList {
+    padding-inline: 0;
+}
+
+.vansList {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 10px;
+}
+
+.vanSingleConatiner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: var(--main-color);
+    border-radius: 5px;
+    padding: 0 1em;
+    margin-bottom: 1em;
+    height: 140px;
+}
+
+.vanSingle {
+    display: flex;
+    align-items: center;
+    margin: 0.5em 0;
+    padding: 0 0.5em;
+}
+
+.vanSingleImg {
+    height: 70px;
+    border-radius: 5px;
+    margin-right: 17px;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+
+.verified {
+    height: 20px;
+    width: 20px;
+}
+
+.pendingImg {
+    height: 25px;
+    width: 25px;
+}
+
+.pending {
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+.btnContainer {
+    display: flex;
+    gap: 20px;
+    padding: 0.5em
+}
+
+
+.seeMoreContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 4em;
+}
+
+.seeMore {
+    background-color: var(--bright-orange);
+}
+
+.delete {
+    font-size: 23px;
+    color: var(--text-main);
+    cursor: pointer;
+}
+
+
+.details {
+    background-color: var(--main-color);
+}
+
+.seeMore, .details, .deleteBtn {
+    border: none;
+    border-radius: 5px;
+    padding: 0.5em 1.5em;
+    color: var(--text-header);
+    font-weight: 700;
+}
+
+.details:hover, .seeMore:hover, .deleteBtn:hover{
+    color: var(--text-main);
+}
+
+.text {
+    margin-left:3.6em;
+}
+
+.userImg {
+    width: 50px;
+    border-radius: 50%;
+    border: 1.5px solid var( --text-main);
+    opacity: 0.9;
+}
+
+
+.NoVans {
+    padding: 2em 0;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10x;
+    margin: 0 auto;
+    color: var(--text-main);
+    width: 100vw;
+}
+
+.loadingContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5em 1em;
+    border-radius: 5px;
+    gap: 10px;
+}
+
+
+
+@media (min-width: 900px){
+    .vansList {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        max-width: 1000px;
+
+    }
+
+    .vanSingleConatiner {
+        justify-content: center;
+        height: 250px;
+    }
+
+    .vanSingle {
+        flex-direction: column;
+    }
+
+    .vanSingleImg {
+        height: 100px;
+    }
+}
+
+
+.loadingOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.5); /* Adjust opacity as needed */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Ensure it appears on top of other content */
+}

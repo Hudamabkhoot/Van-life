@@ -1,18 +1,18 @@
 import React from 'react'
 import { Suspense } from 'react'
 import { Link, useSearchParams, useLoaderData, Await, defer } from 'react-router-dom'
-import styles from '../../css modules/Van.module.css'
-import { getAllVans } from '../../firebase'
+import styles from '../../css modules/Vans/Van.module.css'
+import { getAllVans } from '../../firebase/firebase'
+import VanReviews from '../Vans/VanReviews'
+import PulseLoader from "react-spinners/PulseLoader";
 
 export function loader(){
     return defer( {vans: getAllVans()} )
 }
 
 export default function Vans(){
-
     const [ searchParams, setSearchParams ] = useSearchParams()
     const dataPromise = useLoaderData()
-
     const typeFilter = searchParams.get('type')
 
     function handleFilterChange(key,value){
@@ -25,7 +25,6 @@ export default function Vans(){
             return prevParams
         })
     }
-
     
     function renderVanElements(vans){
         const filteredVans = typeFilter ? vans.filter(van => van.type.toLowerCase() === typeFilter) : vans
@@ -38,14 +37,15 @@ export default function Vans(){
                             type: typeFilter
                         }}>
                         <img src={van.imageUrl}/>
-                        <div className="van-info">
+                        <div className={styles.vanInfo}>
                         <h2>{van.name}</h2>
-                        <p>${van.price}<span>/day</span></p>
+                        <p>${van.price}</p>
                         </div>
                         <span 
-                        className={`van-type ${van.type} selected`}>
+                        className={`van-type ${van.type} selected van-tiles-type`}>
                             {van.type}
                         </span>
+                        <VanReviews vanId={van.id}/>
                     </Link>
                 </div>
             ))
@@ -88,7 +88,13 @@ export default function Vans(){
      return(
         <section className={styles.vanListContainer}>
             <h1>Explore our van options</h1>
-            <Suspense fallback={<h2>Loading...</h2>}>
+            <Suspense fallback={
+                <div className={styles.NoVans}>
+                    <div className={styles.loadingContainer}>
+                    <PulseLoader color="#313E2D" />
+                        </div>
+                </div>
+            }>
                 <Await resolve={dataPromise.vans}>
                 {renderVanElements}
                 </Await>

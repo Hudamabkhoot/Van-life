@@ -2,11 +2,26 @@
     box-sizing: border-box;
 }
 
+:root {
+    --main-color: #fff7ed;
+    --text-main: #313E2D;
+    --text-header: #4d4d4d;
+    --black: #161616;
+    --green: #115e59;
+    --bright-orange: #ffead0;
+    --dark-orange: #ff8c38;
+    --red-orange: #e17654;
+    --host-orange: #ffddb2;
+    --white: #fff;
+    --grey: #ccc;
+    --mid-grey: #8c8c8c
+  }
+
 html,
 body {
     margin: 0;
     padding: 0;
-    background-color: #fff7ed;
+    background-color: var(--main-color);
     font-family: "Inter", sans-serif;
 }
 
@@ -25,41 +40,46 @@ body {
 }
 
 .site-wrapper {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+    height: 100vh;
 }
 
 header {
     height: 110px;
     display: flex;
     align-items: center;
-    padding-block: 10px;
 }
 
 header .site-logo {
-    color: black;
+    color: var(--text-main);
     margin-right: auto;
     text-transform: uppercase;
     font-weight: 900;
-    font-size: 25px;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.site-logo img {
+    max-width: 90px;
 }
 
 header a {
     text-decoration: none;
-    color: #4d4d4d;
+    color: var(--text-header);
     font-weight: 600;
-    padding: 5px 20px;
+    padding: 0.5em 1em;
 }
 
-header a:hover {
-    color: #161616;
-    text-decoration: underline;
-}
-
-.user-icon {
+.user-icon-before {
     height: 18px;
     width: 18px;
+}
+
+.user-icon-after {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
 }
 
 .logout-btn  {
@@ -77,21 +97,6 @@ header a:hover {
     align-items: center;
 }
 
-main {
-    margin-bottom: 84px;
-}
-
-footer {
-    background-color: #161616;
-    color: #aaaaaa;
-    height: 74px;
-    display: flex;
-    flex-shrink: 0;
-    justify-content: center;
-    align-items: center;
-    margin-top: auto;
-    font-weight: 500;
-}
 
 .link-button {
     display: inline-block;
@@ -108,13 +113,13 @@ footer {
 
 .back-button {
     display: block;
-    color: black;
+    color: var(--black);
     text-decoration: none;
     margin-left: 26px;
 }
 
 .back-button span:hover {
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 .link-button:hover {
@@ -124,15 +129,6 @@ footer {
 
 /*** VAN PAGES ***/
 
- .host-van-detail-info > h4 {
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 21px;
-}
-.host-van-detail-info > h4 > span {
-    font-weight: 500;
-}
-
 .host-van-price {
     font-size: 24px;
     font-weight: 500;
@@ -140,7 +136,7 @@ footer {
 
 .host-van-price > span {
     font-size: 16px;
-    color: #4d4d4d;
+    color: var(--text-header);
 }
 
 .host-van-detail-image {
@@ -157,13 +153,13 @@ footer {
     font-weight: 500;
     border: none;
     border-radius: 5px;
-    background-color: #ffead0;
-    color: #4d4d4d;
+    background-color: var( --bright-orange);
+    color: var(--text-header);
     transition: 200ms all cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .van-type:hover {
-    color: #ffead0;
+    color: var( --bright-orange);
 }
 
 .van-type:focus {
@@ -171,22 +167,22 @@ footer {
 }
 
 .van-type.selected {
-    color: #ffead0;
+    color: var( --bright-orange);
 }
 
 .van-type.simple:hover,
 .van-type.simple.selected {
-    background-color: #e17654;
+    background-color: var( --red-orange);
 }
 
 .van-type.rugged:hover,
 .van-type.rugged.selected {
-    background-color: #115e59;
+    background-color: var( --green);
 }
 
 .van-type.luxury:hover,
 .van-type.luxury.selected {
-    background-color: #161616;
+    background-color: var( --black);
 }
 
 .van-type.clear-filters {
@@ -197,14 +193,26 @@ footer {
     font-weight: 500;
     border: none;
     border-radius: 5px;
-    text-decoration: underline;
+    text-decoration: none;
     background-color: transparent;
-    color: #4d4d4d;
+    color: var(--text-header);
 }
 
 i[class*="van-type-"] {
     padding: 7px 14px;
 }
+
+
+.van-tiles-type {
+    margin-left: 0.5em;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0.5em 1em;
+    margin-right: 0.5em;
+    margin-top: 0.5em;;
+}
+
 
 /*  */
 
@@ -214,52 +222,53 @@ i[class*="van-type-"] {
 
 .not-found-container .link-button {
     width: 100%;
-    background-color: #161616;
-    color: white;
+    background-color: var(--black);
+    color: var(--main-color);
 }
 
 
-.navContainer {
+.HeaderNavContainer {
     display: flex;
     align-items: center;
     flex-direction: row;
     justify-content: space-evenly;
     padding: 30px 50px 30px 50px;
+    z-index: 1;
 }
 
-.HamburgerMenu{
+.HeaderHamburgerMenu{
     position: absolute;
     right: 2%;
     cursor: pointer;
 }
 
-.MobileNav {
+.HeaderMobileNav {
     display: none;
 }
 
-@media (max-width: 600px){
-    .DesktopNav {
+@media (max-width: 750px){
+    .HeaderDesktopNav {
         display: none;
     }
 
-    .MobileNav {
+    .HeaderMobileNav {
         display: flex;
         align-items: center;
-        height: 15vh;
+        height: 14vh;
     }
 
-    .navContainer {
+    .HeaderNavContainer {
         flex-direction: column; 
         justify-content: space-evenly;
         position: absolute;
-        gap: 20px;
-        top: 16vh;
-        right:  0;
-        height: 60vh;
-        width: 30%;
+        gap: 17px;
+        top: 15vh;
+        right:  1vh;
+        min-height: 300px;
+        width: 25%;
         border-radius: 5px;
-        background-color: #ffead0;
-        border: 1px solid gray;
+        background-color: var(--main-color);
+        border: 1px solid var(--text-header);
     }
     
 }

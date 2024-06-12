@@ -1,0 +1,43 @@
+.modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    margin: 0 auto;
+    height: 50vh;
+}
+
+.account {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.password, .delete {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid var(--grey);
+    width: 100%;
+}
+
+.editIcon {
+    font-size: 20px;
+    color: var(--grey);
+}
+
+.editImgIcon {
+    font-size: 8-px;
+    color: var(--text-header);
+    opacity: 0.6;
+    position: absolute; 
+    top: 69%; 
+    left: 15%; 
+    transform: translate(-50%, -50%); 
+    z-index: 1000;
+    cursor: pointer;
+}
+
+
+
+

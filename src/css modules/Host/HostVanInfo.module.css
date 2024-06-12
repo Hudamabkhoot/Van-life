@@ -1,0 +1,122 @@
+
+ .detailInfo {
+    padding: 0.3em 0;
+ }
+ .detailInfo > h4 {
+    font-weight: 700;
+    font-size: 1.1rem;
+    line-height: 21px;
+    margin-bottom: 0.5em;
+}
+.detailInfo > h4 > span {
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+.description {
+    display: flex;
+    gap: 10px;
+    margin: 0.7em 0;
+}
+
+.hostReviews {
+    color: var(--text-main);
+    padding: 1.5em 0;
+}
+
+.hostReviews .topText {
+    display: flex;
+    align-items: center;
+    margin-bottom: 32px;
+    margin-left: 1em;
+}
+
+.hostReviews > h2 {
+    margin-left: 0.5em;
+}
+
+.hostReviews .topText > p {
+    margin: 0;
+    color: #4d4d4d;
+}
+
+.hostReviews .topText > p span {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.hostReviews > img {
+    margin-bottom: 36px;
+}
+
+.hostReviews .review {
+    margin: 1.5em;
+    padding: 0 1.5em;
+}
+
+.hostReviews .review .info {
+    display: flex;
+    align-items: center;
+    margin: 1em 0;
+    gap: 10px;
+}
+
+.hostReviews .review .name {
+    color: var(--text-main);
+    margin-right: 10px;
+    font-weight: 600;
+}
+
+.hostReviews .review .date {
+    color: var(--text-header);
+}
+
+.review  {
+    border-bottom: 1px solid var(--grey);
+    padding: 1.5em 0;
+}
+
+.review:last-child {
+    border-bottom: none;
+}
+
+.text {
+    margin-left:3.6em;
+    margin-bottom: 1.5em;
+}
+
+.hostReviews .reviewStar {
+    color: var(--dark-orange);
+    margin-right: 5px;
+}
+
+.userImg {
+    width: 50px;
+    border-radius: 50%;
+    border: 1.5px solid var( --text-main);
+    opacity: 0.9;
+}
+
+
+.NoDashboardReviews {
+    padding: 2em 0;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10x;
+    margin: 0 auto;
+    color: var(--text-main);
+}
+
+
+
+.NoDashboardReviewsText {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5em 1em;
+    border-radius: 5px;
+    gap: 10px;
+}
+

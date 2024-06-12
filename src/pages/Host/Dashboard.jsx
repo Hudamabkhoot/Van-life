@@ -1,186 +1,178 @@
-import React, {Suspense} from 'react'
-import { Link, defer, useLoaderData, Await } from 'react-router-dom'
-import styles from '../../css modules/Dashboard.module.css'
-import { getHostVans, getHostReviews, deleteVan, getTransactions } from '../../firebase'
-import { BsStarFill } from "react-icons/bs"
-import Van from '../../assets/images/van.svg'
-import Verified from '../../assets/images/verified.svg'
-import Pending from '../../assets/images/pending.svg'
+import React, { useEffect, useContext, useState } from 'react';
+import { Link } from 'react-router-dom';
+import styles from '../../css modules/Host/Dashboard.module.css';
+import { getHostVans, getHostReviews } from '../../firebase/firebase';
+import { BsStarFill } from 'react-icons/bs';
+import { MdOutlineRateReview } from 'react-icons/md';
+import { FaShuttleVan } from 'react-icons/fa';
+import Verified from '../../assets/images/verified.svg';
+import Pending from '../../assets/images/pending.svg';
+import { HostContext } from '../../components/HostContext';
+import { AuthContext } from '../../components/AuthContext';
+import NameModal from '../Host/Settings/NameModal';
+import BarLoader from 'react-spinners/BarLoader';
+import PulseLoader from 'react-spinners/PulseLoader';
+import { Toaster } from 'react-hot-toast';
+import { toast } from 'react-hot-toast'; 
 
-export function loader(){
-    return defer( { vans:getHostVans(), transactions: getTransactions(), reviews: getHostReviews() } )
-}
+export default function Dashboard() {
+  const [loading, setLoading] = useState(true);
+  const [vans, setVans] = useState([]);
+  const [reviews, setReviews] = useState([]);
+  const { last30DaysIncome } = useContext(HostContext);
+  const { authUser, isReloading } = useContext(AuthContext);
+  const { nameModalOpen, setNameModalOpen } = useContext(HostContext);
+  const id = authUser.uid;
+  
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const vansData = await getHostVans(id);
+        const reviewsData = await getHostReviews(id);
+        setVans(vansData);
+        setReviews(reviewsData);
+        setLoading(false);
+      } catch (error) {
+        setLoading(false);
+      }
+    };
 
-export default function Dashboard(){
-    const loaderData = useLoaderData()
+    fetchData();
+  }, [id]);
 
-    function renderHost(transactions){
-        let last30DaysIncome = 0
-
-        const last30DaysTransactions = transactions
-            .map(item => ({ ...item, date: new Date(item.date) }))
-            .filter(item => new Date() - item.date <= 30 * 24 * 60 * 60 * 1000);
-            last30DaysIncome = last30DaysTransactions.reduce((total, transaction) => total + transaction.amount, 0);
-        
-        return( 
-            <section className={styles.dashboardEarnings}>
-            <div className={styles.info}>
-                    <h2>Welcome!</h2>
-                    <p>Income in last <span>30 days</span></p>
-                    <h2>$ {last30DaysIncome}</h2>
-                </div>
-                <Link 
-                to="income"
-                className={styles.details}
-                >Details</Link>
-              </section>
-        )
+  useEffect(() => {
+    if (authUser && !authUser.displayName) {
+      setNameModalOpen(true);
     }
+  }, [authUser]);
 
-
-    function renderVanElements(vans){
-        const hostVanEls = vans.map(van => {
-            let url = '/host/vans/'+ van.id
-            
-            function removeVan(vanId){
-                vanId = van.id
-                alert('Are you sure you want to delete this van? This cannot be undone.')
-                try {
-                    deleteVan(vanId)
-                } catch(err){
-                    return {
-                        error: err.message
-                    }
-                }finally {
-                    alert('This van has been deleted')
-                  }
-            }
-            return(
-          
-                <div key={van.id} className={styles.vanSingleConatiner}>
-                    <Link to={url}>
-                        <div className={styles.vanSingle}>
-                        <img src={van.imageUrl} alt={van.name} className={styles.vanSingleImg}/>
-                        <div>
-                            <div className={styles.title}>
-                            <h3>{van.name}</h3>
-                            {van.approved ? 
-                            <img src={Verified} className={styles.verified}/> 
-                            : 
-                            <p className={styles.pending}>
-                                 <img src={Pending} className={styles.pendingImg}/>
-                                Pending
-                                </p>}
-                            </div>
-                            <p>${van.price} /day</p>
-                        </div>
-                        </div>
-                    </Link>
-                    <div className={styles.btnContainer}>      
-                     <button onClick={removeVan} className={styles.deleteBtn}>delete
-                    </button>
-                    </div>
-                </div>
-            
-            )
-            }
-        )
-        return(
-            <section className={styles.vansList}>
-                <div>{hostVanEls}</div>
-            </section>
-        )
+  useEffect(() => {
+    if (isReloading) {
+      toast.promise(
+        new Promise((resolve) => setTimeout(resolve, 4000)),
+        {
+          loading: 'Updating your profile...',
+          success: 'profile updated successfully!',
+          error: 'Failed to update profile',
+        }
+      );
     }
+  }, [isReloading]);
 
-
-    function renderReviews(reviews){
-        const reviewsEl = reviews.map(review => (
-            <div key={review.id} className={styles.review}>
-                    <div>
+  return (
+    <section>
+      <Toaster position="top-center" reverseOrder={false} containerStyle={{ zIndex: 10000 }} />
+      {nameModalOpen && <NameModal />}
+      {isReloading && (
+        <div className={styles.loadingOverlay}>
+          <BarLoader color="#ff8c38" />
+        </div>
+      )}
+      <div className={styles.addbtnContainer}>
+        <Link to="addvan" className={styles.addbtn}>
+          <FaShuttleVan className={styles.vanIcon} alt="Van img" />
+          Add new van
+        </Link>
+      </div>
+      <section className={styles.dashboardEarnings}>
+        <div className={styles.info}>
+          <h2>Welcome {authUser.displayName}!</h2>
+          <p>
+            Income in last <span>30 days</span>
+          </p>
+          <h2>$ {last30DaysIncome}</h2>
+        </div>
+        <Link to="income" className={styles.details}>
+          Details
+        </Link>
+      </section>
+      <section className={styles.hostReviews}>
+        <h2>Your Reviews</h2>
+        <div className={styles.vanReviews}>
+          {loading ? (
+            <div className={styles.loadingContainer}>
+            <PulseLoader color="#313E2D" />
+            </div>
+          ) : (
+            reviews.length === 0 ? (
+              <div className={styles.NoDashboardReviews}>
+                <h3 className={styles.NoDashboardReviewsText}>
+                  <MdOutlineRateReview alt="No reviews img" />
+                  No reviews yet!
+                </h3>
+              </div>
+            ) : (
+              reviews.slice(0, 3).map((review) => (
+                <div key={review.id} className={styles.review}>
+                  <div>
+                    <div className={styles.info}>
+                      <img src={review.userImg}  className={styles.userImg} />
+                      <div>
                         {[...Array(review.rating)].map((_, i) => (
-                        <BsStarFill className={styles.reviewStar} key={i} />
+                          <BsStarFill className={styles.reviewStar} key={i} />
                         ))}
-                        <div className={styles.info}>
                         <p className={styles.name}>{review.name}</p>
                         <p className={styles.date}>{review.date}</p>
-                        </div>
-                        <p>{review.text}</p>
+                      </div>
                     </div>
-                  
-                </div> 
-        )).slice(0, 3)
-        return(
-            <section className={styles.vansList}>
-                <div>{reviewsEl}</div>
-            </section>
-        )
-    }
-
-
-    function renderNoReviews(reviews) {
-        if (reviews.length === 0) {
-            return (
-                    <div className={styles.getStartedContainer}>
-                <Link
-                    to="addvan"
-                    className={styles.addbtn}
-                    >
-                        <img src={Van}  alt="Van img" />
-                        Get started</Link>
-                 </div>
-            );
-        }
-    }
-    return(
-        <section>
-            <div className={styles.addbtnContainer}>
-                <Link
-                    to="addvan"
-                    className={styles.addbtn}
-                    >
-                        <img src={Van}  alt="Van img" />
-                        Add new van</Link>
-                 </div>
-            <Suspense fallback={<h2>Welcome!</h2>}>
-                <Await resolve={loaderData.transactions}>
-                    {renderHost}
-                </Await>
-            </Suspense>
-            <section className={styles.hostReviews}>
-            <h2>Your Reviews</h2>
-            <Suspense fallback={<h2>Loading reviews...</h2>}>
-                <Await resolve={loaderData.reviews}>
-                    {renderReviews}
-                </Await>
-            </Suspense>
-            </section>
-            <section  className={styles.seeMoreContainer}>
-            <Link
-                    to="reviews"
-                >
-                    <button
-                    className={styles.seeMore}>
-                        See more
-                    </button>
-                </Link>
-            </section>
-
-            <section className={styles.dashboardVans}>
-                <div className={styles.top}>
-                    <h2>Your listed vans</h2>
+                    <p className={styles.text}>{review.text}</p>
+                  </div>
                 </div>
-                <Suspense  fallback={<h2>Loading vans...</h2>}>
-                    <Await resolve={loaderData.vans}>
-                        {renderVanElements}
-                    </Await>
-                </Suspense>
-                <Suspense  fallback={<h2>Loading vans...</h2>}>
-                    <Await resolve={loaderData.vans}>
-                        {renderNoReviews}
-                    </Await>
-                </Suspense>
-            </section>
-        </section>
-        
-    )
+              ))
+            )
+          )}
+        </div>
+        <Link to="reviews" className={styles.seeMoreContainer}>
+          {reviews.length !== 0 && <button className={styles.seeMore}>See more</button>}
+        </Link>
+      </section>
+      <section className={styles.dashboardVans}>
+        <div className={styles.top}>
+          <h2>Your listed vans</h2>
+        </div>
+        <div className={styles.vansList}>
+          {loading ? (
+             <div className={styles.NoVans}>
+             <div className={styles.loadingContainer}>
+                 <PulseLoader color="#313E2D" />
+             </div>
+         </div>
+          ) : (
+            vans.length === 0 ? (
+              <div className={styles.NoDashboardVans}>
+                <Link to="addvan" className={styles.NoDashboardVansBtn}>
+                  <FaShuttleVan className={styles.vanIcon} alt="Van img" />
+                  Get started!
+                </Link>
+              </div>
+            ) : (
+              vans.map((van) => (
+                <Link to={`/host/vans/${van.id}`} key={van.id}>
+                  <div className={styles.vanSingleConatiner}>
+                    <div className={styles.vanSingle}>
+                      <img src={van.imageUrl} alt={van.name} className={styles.vanSingleImg} />
+                      <div className={styles.textContainer}>
+                        <div className={styles.title}>
+                          <h3>{van.name}</h3>
+                          {van.approved ? (
+                            <img src={Verified} className={styles.verified} alt="Verified" />
+                          ) : (
+                            <p className={styles.pending}>
+                              <img src={Pending} className={styles.pendingImg} alt="Pending" />
+                              Pending
+                            </p>
+                          )}
+                        </div>
+                        <p>${van.price} /day</p>
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              ))
+            )
+          )}
+        </div>
+      </section>
+    </section>
+  );
 }
