@@ -1,8 +1,8 @@
-![Weather App](https://github.com/Hudamabkhoot/weather-app/assets/100641349/efaf526a-d477-4377-bc1c-31931fd70335)
+![Van Life](https://github.com/Hudamabkhoot/Van-life/assets/100641349/4220917c-8c74-410c-9a3d-61b2b74c665b)
 
 #  Van Life.
 
-- Van Life is a sleek and intuitive website developed with React, designed to streamline the process of finding the perfect van for your adventures. This user-friendly web application allows users to log in, providing personalized browsing experiences. With its convenient tag-based filtering system, VanLife enables effortless exploration of various types of vans, ensuring users can quickly find the ideal vehicle for their journey.
+- Van Life is a dynamic web app built using Vite for efficient development and Firebase for backend services. Leveraging the React Router Scrimba course, VanLife users can browse, manage, and rent vans effortlessly. With features like user authentication, profile management, and reviews, VanLife ensures a secure and personalized experience.
 
 ## Live Demo.
 
@@ -11,17 +11,15 @@
 ## Features
 
 
-- User Authentication: Sign up and log in securely with your email and password.
-
-- Current Weather Display: View the current weather conditions for any location, including temperature, weather icon, and description.
+- User Authentication: Users can Sign up and log in securely with email and password.
 
 - Van Management: Users can add new vans to the platform and delete vans they no longer need.
 
-- Review System: Share your experiences by adding reviews for vans you've rented.
+- Review System:Users can share experiences by adding reviews for vans they have rented.
 
-- Profile Management: Update your profile information and change your password as needed.
+- Profile Management: Users can update profile information and change password as needed.
 
-- Account Deletion: Easily delete your account if you no longer wish to use our platform.
+- Account Deletion:  Users can dasily delete their account if they no longer wish to use our platform.
 
 
 ## Built With:
