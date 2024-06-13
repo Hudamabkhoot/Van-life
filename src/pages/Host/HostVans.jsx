@@ -14,7 +14,11 @@ export default function HostVans() {
     const { authUser } = useContext(AuthContext);
     const id = authUser.uid
     const navigate = useNavigate();
-
+    
+    useEffect(() => {
+        window.scrollTo(0, 0);
+      }, []);
+      
     const fetchVans = async () => {
         try {
             const vansData = await getHostVans(id);

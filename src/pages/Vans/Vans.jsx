@@ -1,5 +1,4 @@
-import React from 'react'
-import { Suspense } from 'react'
+import React, { Suspense, useEffect } from 'react'
 import { Link, useSearchParams, useLoaderData, Await, defer } from 'react-router-dom'
 import styles from '../../css modules/Vans/Van.module.css'
 import { getAllVans } from '../../firebase/firebase'
@@ -15,6 +14,10 @@ export default function Vans(){
     const dataPromise = useLoaderData()
     const typeFilter = searchParams.get('type')
 
+    useEffect(() => {
+        window.scrollTo(0, 0);
+      }, []);
+      
     function handleFilterChange(key,value){
         setSearchParams(prevParams => {
             if(value === null){

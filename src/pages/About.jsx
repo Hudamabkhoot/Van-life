@@ -1,9 +1,13 @@
-import React, { Suspense, useState, useEffect } from "react"
+import React, { useEffect } from "react"
 import { Link } from 'react-router-dom'
 import styles from "../css modules/About.module.css";
 import Join from '../assets/images/joinUs.jpg'
 
 export default function About() {
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+      }, []);
 
     return (
         <div className={styles.aboutContainer}>

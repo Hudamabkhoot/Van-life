@@ -1,23 +1,35 @@
-# co02b4061bce53508d6b9456d
+![Weather App](https://github.com/Hudamabkhoot/weather-app/assets/100641349/efaf526a-d477-4377-bc1c-31931fd70335)
 
-Warning: Vite enforces using jsx syntax inside jsx/tsx files, so it will complain about that. Solution: rename `.js` files to `.jsx` :)
+#  Van Life.
 
-Quick start:
+- Van Life is a sleek and intuitive website developed with React, designed to streamline the process of finding the perfect van for your adventures. This user-friendly web application allows users to log in, providing personalized browsing experiences. With its convenient tag-based filtering system, VanLife enables effortless exploration of various types of vans, ensuring users can quickly find the ideal vehicle for their journey.
 
-```
-$ npm install
-$ npm start
-````
+## Live Demo.
 
-Head over to https://vitejs.dev/ to learn more about using vite
-## About Scrimba
+**live demo: [Here]()**
 
-At Scrimba our goal is to create the best possible coding school at the cost of a gym membership! 💜
-If we succeed with this, it will give anyone who wants to become a software developer a realistic shot at succeeding, regardless of where they live and the size of their wallets 🎉
-The Frontend Developer Career Path aims to teach you everything you need to become a Junior Developer, or you could take a deep-dive with one of our advanced courses 🚀
+## Features
 
-- [Our courses](https://scrimba.com/allcourses)
-- [The Frontend Career Path](https://scrimba.com/learn/frontend)
-- [Become a Scrimba Pro member](https://scrimba.com/pricing)
 
-Happy Coding!
+- User Authentication: Sign up and log in securely with your email and password.
+
+- Current Weather Display: View the current weather conditions for any location, including temperature, weather icon, and description.
+
+- Van Management: Users can add new vans to the platform and delete vans they no longer need.
+
+- Review System: Share your experiences by adding reviews for vans you've rented.
+
+- Profile Management: Update your profile information and change your password as needed.
+
+- Account Deletion: Easily delete your account if you no longer wish to use our platform.
+
+
+## Built With:
+
+- React
+- React Router
+- Firebase
+- Redux
+- Charts js
+- CSS Modules
+- React Hot Toast

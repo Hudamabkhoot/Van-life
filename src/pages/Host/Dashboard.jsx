@@ -59,6 +59,10 @@ export default function Dashboard() {
     }
   }, [isReloading]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <section>
       <Toaster position="top-center" reverseOrder={false} containerStyle={{ zIndex: 10000 }} />

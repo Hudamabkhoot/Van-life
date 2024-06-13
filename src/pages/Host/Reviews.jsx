@@ -28,7 +28,10 @@ export default function Reviews() {
     fetchData();
   }, []);
 
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  
   return (
     <section>
       {loading ? (

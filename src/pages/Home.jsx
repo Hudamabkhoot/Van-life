@@ -1,5 +1,4 @@
-import React from "react";
-import { Suspense } from 'react'
+import React, { Suspense, useEffect } from "react";
 import { Link, useLoaderData, Await, defer } from 'react-router-dom'
 import styles from '../css modules/Home.module.css';
 import { getAllVans, getReviews } from '../firebase/firebase'
@@ -15,6 +14,9 @@ export function loader(){
 
 export default function Home() {
     const dataPromise = useLoaderData()
+    useEffect(() => {
+        window.scrollTo(0, 0);
+      }, []);
 
     function renderVanElements(vans){
         const vanElements = vans.map(van => (

@@ -1,4 +1,4 @@
-import React, {useState, useContext} from "react"
+import React, {useState, useContext, useEffect} from "react"
 import styles from '../../css modules/Host/Income.module.css'
 import { HostContext } from '../../components/HostContext'
 import {
@@ -26,6 +26,10 @@ ChartJS.register(
     const [displayCount, setDisplayCount] = useState(5);
     const { transactions, last30DaysIncome, last30DaysTransactions } = useContext(HostContext);
     
+    useEffect(() => {
+        window.scrollTo(0, 0);
+      }, []);
+
     const handleToggleShow = () => {
         setShowAll(!showAll);
         if (!showAll) {

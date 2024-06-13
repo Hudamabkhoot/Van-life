@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react'
+import React, { Suspense, useEffect } from 'react'
 import { defer, Await, useLoaderData } from 'react-router-dom'
 import styles from '../../css modules/Host/HostVanInfo.module.css'
 import { useOutletContext } from "react-router-dom"
@@ -14,7 +14,10 @@ export function loader({ params }) {
 export default function HostVanInfo() {
     const { currentVan } = useOutletContext()
     const dataPromise = useLoaderData()
-
+    
+    useEffect(() => {
+        window.scrollTo(0, 0);
+      }, []);
 
     function renderReviewsElements(reviews){ 
         if (reviews.length === 0) {

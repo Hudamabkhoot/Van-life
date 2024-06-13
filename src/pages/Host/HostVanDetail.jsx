@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react'
+import React, { Suspense, useEffect } from 'react'
 import { defer, Await, useLoaderData } from 'react-router-dom'
 import { Link, NavLink, Outlet } from 'react-router-dom'
 import styles from '../../css modules/Host/HostVanDetail.module.css'
@@ -17,6 +17,10 @@ export default function HostVanDetail(){
         color: '#161616',
      }
      
+     useEffect(() => {
+        window.scrollTo(0, 0);
+      }, []);
+      
     function renderHostVanDetail(currentVan){
 
         
